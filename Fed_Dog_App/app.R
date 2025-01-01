@@ -87,61 +87,57 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   
+  # Reactive expression to generate the calendar plot
+  generate_calendar_plot <- reactive({
+    custom_events <- calendR(year = input$year_chr,
+                             month = match(input$month_chr, month.name)
+    )
+    
+    events <- custom_events$data |> 
+      mutate(rows = row_number(),
+             date = case_when(
+               rows == input$heartworm_day ~ glue("Heartworm - {input$Heartworm_label}"),
+               .default = NA)
+      ) |> 
+      pull(date)
+    
+    custom_cal <- calendR(year = input$year_chr,
+                          month = match(input$month_chr, month.name),
+                          title = glue("{input$month_chr} {input$year_chr}: Fed Dog?"),
+                          special.days = events,
+                          special.col = c("lightblue"),
+                          legend.pos = "top",
+                          text.size = 3,
+                          margin = 1,
+                          weeknames = c("Mo", "Tu",  # Week names
+                                        "We", "Th",
+                                        "Fr", "Sa",
+                                        "Su"),
+                          day.size = 2.25
+    )
+    
+    # Horizontal ------------------
+    # Reversed Diagonal -----------------------
+    annotate_AmPm <- function(y) {
+      annotate(geom = "text",
+               x = -1,
+               y = y,
+               label = "AM\nPM")
+    }
+    
+    custom_cal + 
+      geom_segment(aes(x = (dow) - 0.5, xend = (dow) + 0.5,
+                       y = y + 0.5, yend = y - 0.5), col = "gray60") +
+      annotate_AmPm(1:5)
+  })
+  
+  # Render the plot in the UI
   output$calender <- renderPlot({
-      custom_events <- calendR(year = input$year_chr,
-                               month = match(input$month_chr, month.name)
-                               )
-      
-      
-      events <- custom_events$data |> 
-        mutate(rows = row_number(),
-               date = case_when(
-                 rows == input$heartworm_day ~ glue("Heartworm - {input$Heartworm_label}"),
-                 .default = NA)
-        ) |> 
-        pull(date)
-      
-      
-      
-      ## working within ggplot means working with a coordinate system
-      custom_cal <- calendR(year = input$year_chr,
-                            month = match(input$month_chr, month.name),
-                            title = glue("{input$month_chr} {input$year_chr}: Fed Dog?"),
-                            
-                            special.days = events,
-                            special.col = c("lightblue"),
-                            legend.pos = "top",
-                            
-                            text.size = 3,
-                            margin = 1,
-                            weeknames = c("Mo", "Tu",  # Week names
-                                          "We", "Th",
-                                          "Fr", "Sa",
-                                          "Su"),
-                            day.size = 2.25
-      )
-      
-      # Horizontal ------------------
-      
-      # Reversed Diagonal -----------------------
-      
-      annotate_AmPm <- function(y) {
-        annotate(geom = "text",
-                 x = -1,
-                 y = y,
-                 label = "AM\nPM")
-      }
-      
-      custom_cal + 
-        geom_segment(aes(x = (dow) - 0.5, xend = (dow) + 0.5,
-                         y = y + 0.5, yend = y - 0.5), col = "gray60") +
-        # annotate(geom = "text",
-        #          x = 5, y = 5,
-        #          label = glue("{input$text}")) +
-        annotate_AmPm(1:5)
-    })
+    generate_calendar_plot()
+  })
   
   output$value <- renderText({input$text})
+  
   
   output$download_pdf <- downloadHandler(
     filename = function() {
@@ -150,7 +146,7 @@ server <- function(input, output) {
     content = function(file) {
       # Save the current calendar plot as a PDF file
       ggsave(filename = file,
-             plot = last_plot(),
+             plot = generate_calendar_plot(),
              device = cairo_pdf,
              units = "in",
              height = 8.5,
