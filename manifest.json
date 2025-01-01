@@ -1,7 +1,7 @@
 {
   "version": 1,
   "locale": "en_US",
-  "platform": "4.4.1",
+  "platform": "4.4.2",
   "metadata": {
     "appmode": "static",
     "primary_rmd": null,
@@ -11,47 +11,8 @@
   },
   "packages": null,
   "files": {
-    "Fed_Dog_App/app.html": {
-      "checksum": "0a9d8a4f275f4a72639250cdb2f373e2"
-    },
     "Fed_Dog_App/app.R": {
       "checksum": "3418a5af0682b9b15cf36a81d8cd6b39"
-    },
-    "Output/2024/FeedDog_calendar_2024_1.pdf": {
-      "checksum": "4849e657ea0f000dd51f57261594aebc"
-    },
-    "Output/2024/FeedDog_calendar_2024_10.pdf": {
-      "checksum": "ceb0dfe21221e69bddb9a2533be5c7f5"
-    },
-    "Output/2024/FeedDog_calendar_2024_11.pdf": {
-      "checksum": "ca88e71402648eb0d8d6d6b36903ed11"
-    },
-    "Output/2024/FeedDog_calendar_2024_12.pdf": {
-      "checksum": "dbbb479f6d3f0f664fb400f54c6a6543"
-    },
-    "Output/2024/FeedDog_calendar_2024_2.pdf": {
-      "checksum": "0a09045171fef268a9e8a1c9800f2048"
-    },
-    "Output/2024/FeedDog_calendar_2024_3.pdf": {
-      "checksum": "32e171b0ec380d83e690884af7bf7f5f"
-    },
-    "Output/2024/FeedDog_calendar_2024_4.pdf": {
-      "checksum": "621e97d44a1ee5452bc64afa722ae1e3"
-    },
-    "Output/2024/FeedDog_calendar_2024_5.pdf": {
-      "checksum": "ee99c59f5feb9da29dedc8c2b5efc26d"
-    },
-    "Output/2024/FeedDog_calendar_2024_6.pdf": {
-      "checksum": "13b4d97cb9fbbad9570540e7c48dc085"
-    },
-    "Output/2024/FeedDog_calendar_2024_7.pdf": {
-      "checksum": "f08827d04fb2763a53ea9be658da76da"
-    },
-    "Output/2024/FeedDog_calendar_2024_8.pdf": {
-      "checksum": "af5199fcca98831601b08d92a65671a0"
-    },
-    "Output/2024/FeedDog_calendar_2024_9.pdf": {
-      "checksum": "23febefabdbc6907f306aac307272dfd"
     },
     "Script/Feed_Dog_Update/Feed_Dog_Update.R": {
       "checksum": "ae1d12f51510a8c943df79090e0c1406"
