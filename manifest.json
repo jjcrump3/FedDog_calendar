@@ -11,8 +11,17 @@
   },
   "packages": null,
   "files": {
+    ".Rprofile": {
+      "checksum": "1513ebc36e50697cdb1985df9dc83883"
+    },
+    "Fed_Dog_App/app.html": {
+      "checksum": "0a9d8a4f275f4a72639250cdb2f373e2"
+    },
     "Fed_Dog_App/app.R": {
-      "checksum": "3418a5af0682b9b15cf36a81d8cd6b39"
+      "checksum": "d8fd5acf4b57c7e5d623473e49083e24"
+    },
+    "renv.lock": {
+      "checksum": "a7795a8cd686b468f779527c92a629e5"
     },
     "Script/Feed_Dog_Update/Feed_Dog_Update.R": {
       "checksum": "ae1d12f51510a8c943df79090e0c1406"
