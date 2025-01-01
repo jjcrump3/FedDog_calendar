@@ -12,6 +12,7 @@ library(ggplot2)
 library(fs)
 library(glue)
 library(shiny)
+library(rsconnect)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
