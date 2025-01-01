@@ -73,7 +73,7 @@ ui <- fluidPage(
         
         # Show a plot of the generated distribution
         mainPanel(
-          width = 12,
+          width = 8,
           # Add the download button for printing
           downloadButton("download_pdf", "Download Calendar as PDF"),
           plotOutput("calender",
