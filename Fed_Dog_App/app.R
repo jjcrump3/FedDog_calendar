@@ -77,7 +77,7 @@ ui <- fluidPage(
           # Add the download button for printing
           downloadButton("download_pdf", "Download Calendar as PDF"),
           plotOutput("calender",
-                     height = "600px"),
+                     height = "1000px"),
           
           # verbatimTextOutput("value"), # Adding notes to the calendar would be nice, but not required
           
