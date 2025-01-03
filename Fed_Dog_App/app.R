@@ -85,7 +85,19 @@ ui <- fluidPage(
     )
 
 # Define server logic required to draw a histogram
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  observe({
+    days_in_selected_month <- days_in_month(as.Date(paste0(input$year_chr, "-", 
+                                                           match(input$month_chr, month.name), "-01")))
+    
+    updateSelectInput(
+      session,
+      "heartworm_day",
+      choices = seq(1, days_in_selected_month),
+      selected = min(input$heartworm_day, days_in_selected_month) # Retain current selection or adjust if out of range
+    )
+  })
   
   # Reactive expression to generate the calendar plot
   generate_calendar_plot <- reactive({
