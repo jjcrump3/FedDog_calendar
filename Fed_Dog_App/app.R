@@ -153,7 +153,7 @@ server <- function(input, output, session) {
   
   output$download_pdf <- downloadHandler(
     filename = function() {
-      glue("Output/{input$year_chr}/FeedDog_calendar_{input$year_chr}_{input$month_chr}.pdf")
+      glue("Output/{input$year_chr}/FeedDog_calendar_{input$month_chr}_{input$year_chr}.pdf")
     },
     content = function(file) {
       # Save the current calendar plot as a PDF file
